@@ -16,8 +16,6 @@ def quiz(request):
         incorrect = 0
         for q in questions:
             total+=1
-            print(request.POST.get(q.question))
-            print(q.answer)
             if q.answer == request.POST.get(q.question):
                 score+=10
                 correct+=1
