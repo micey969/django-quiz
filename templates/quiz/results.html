@@ -5,12 +5,13 @@
             <h1 class="display-4">Results</h1>
             <hr>
             
-            <div class="card">
-                <div class="card-body">
-                    <h3>Grade:</h3>
-                    <p>Score:</p>
-                    <p>Correct:</p>
-                    <p>Incorrect:</p>
+            <div class="card bq-dark">
+                <div class="card-body bg-dark">
+                    <h3>Grade: {% if percenatge >= 50 %} <span style="color: green;">PASS</span> {% else %} <span style="color: red;">FAIL</span> {% endif %}</h3>
+                    <p>Score: {{ score }}</p>
+                    <p>Correct: {{ correct }}</p>
+                    <p>Incorrect: {{ incorrect }}</p>
+                    <p>Percentage: {{ percentage }}%</p>
                 </div>
             </div>
             <hr>

@@ -8,9 +8,27 @@ def index(request):
     return render(request, 'quiz/index.html')
 
 def quiz(request):
+    questions = Questions.objects.all()
     if request.method == "POST":
-        return render(request, 'quiz/results.html')
+        score = 0
+        total = 0
+        correct = 0
+        incorrect = 0
+        for q in questions:
+            total+=1
+            if q.answer == request.POST.get(q.question):
+                score+=10
+                correct+=1
+            else:
+                incorrect+=1
+        percentage = (score/ (total*10)) * 100
+        context = {
+            'score': score,
+            'correct': correct,
+            'incorrect': incorrect,
+            'percentage': percentage
+        }
+        return render(request, 'quiz/results.html', context)
 
     else:
-        questions = Questions.objects.all
         return render(request, 'quiz/quiz.html',{'questions':questions})

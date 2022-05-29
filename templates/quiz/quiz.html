@@ -4,7 +4,7 @@
         <div class="container bg-dark p-5 text-light">
             <h1 class="display-4">Quiz</h1>
             <hr>
-            <form action="POST">
+            <form method="POST">
                 {% csrf_token %}
                 {% for q in questions %}
                 <div class="form-group">
